@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Velox Trail Mountain Bike 29",
+    "category": "Mountain Bike",
+    "price": 3299.90,
+    "image": "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=800&q=80",
+    "description": "Quadro em alumínio hidroformado, transmissão Shimano 24V e freios a disco hidráulicos para trilhas exigentes."
+  },
+  {
+    "id": 2,
+    "name": "Apex Pro Carbon Road Bike",
+    "category": "Speed",
+    "price": 5890.00,
+    "image": "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80",
+    "description": "Geometria aerodinâmica com garfo e quadro em fibra de carbono, ideal para alta performance no asfalto."
+  },
+  {
+    "id": 3,
+    "name": "Urban Commuter Step-Thru",
+    "category": "Urbana",
+    "price": 1850.00,
+    "image": "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=800&q=80",
+    "description": "Projetada para deslocamento diário com para-lamas integrados, bagageiro traseiro e postura ergonômica."
+  },
+  {
+    "id": 4,
+    "name": "Gravel Roam Adventure 700c",
+    "category": "Gravel",
+    "price": 4199.90,
+    "image": "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=800&q=80",
+    "description": "Versatilidade total entre estradas de terra batida e asfalto com pneus largos de alta tração."
+  },
+  {
+    "id": 5,
+    "name": "Capacete Aerodinâmico Velox Protect",
+    "category": "Acessórios",
+    "price": 279.90,
+    "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
+    "description": "Construção In-Mold com sistema de ventilação de 18 canais e ajuste milimétrico traseiro."
+  },
+  {
+    "id": 6,
+    "name": "Sapatilha Road Carbon Grip",
+    "category": "Vestuário",
+    "price": 459.00,
+    "image": "https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=800&q=80",
+    "description": "Fechamento por disco BOA, solado reforçado para máxima transferência de potência nos pedais."
+  },
+  {
+    "id": 7,
+    "name": "Farol Noturno LED 1000 Lumens USB",
+    "category": "Acessórios",
+    "price": 149.90,
+    "image": "https://images.unsplash.com/photo-1502744688674-c619d38864a8?auto=format&fit=crop&w=800&q=80",
+    "description": "Bateria recarregável de longa duração, resistência à chuva IPX6 e 5 modos de iluminação."
+  },
+  {
+    "id": 8,
+    "name": "Bolsa de Quadro Impermeável 1.5L",
+    "category": "Acessórios",
+    "price": 119.00,
+    "image": "https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&fit=crop&w=800&q=80",
+    "description": "Fixação por tiras de velcro reforçado, zíper selado e compartimento touch para smartphone."
+  }
+]

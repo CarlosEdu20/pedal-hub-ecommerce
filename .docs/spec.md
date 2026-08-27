@@ -1,70 +1,61 @@
-# Spec — pedal-hub-ecommerce (E-commerce Estático)
+# Especificação — PedalHub E-commerce
 
 ## 1. Visão Geral
 
-Construção de uma mini-loja de e-commerce estática autoral voltada para o nicho de ciclismo e mobilidade urbana (**pedal-hub-ecommerce**), hospedada publicamente e de forma gratuita.
+Construção de uma mini-loja de e-commerce estática e autoral voltada para o nicho de ciclismo e mobilidade urbana (**PedalHub**), hospedada publicamente de forma gratuita.
 
 A entrega final consiste em uma única URL pública contendo:
-- A loja funcional com catálogo dinâmico;
-- Uma página `/como-fiz`;
-- Um vídeo de 5 a 8 minutos explicando a construção, organização de pastas, decisões técnicas, métricas de Lighthouse e aprendizados do projeto.
-
-O foco é demonstrar domínio prático dos conceitos:
-- E-commerce e Headless Commerce (catálogo desacoplado da interface);
-- Consumo assíncrono de dados via `fetch`;
-- Boas práticas de CDN, cache e projeção de arquitetura na AWS;
-- Performance e métricas com Lighthouse;
-- Casos de uso práticos de IA aplicada a e-commerce.
-
-**Prazo:** Terça-feira, 01/09/2026, às 17h59.  
-**Modalidade:** Individual.
+- A vitrine da loja funcional;
+- A página `/como-fiz` com o vídeo explicativo do projeto.
 
 ---
 
-## 2. Objetivos e Identidade
+## 2. Identidade da Marca
 
-### 2.1 Identidade da Marca
-- **Nome da Loja:** Velox Bike Store
-- **Nicho:** Bicicletas de alta performance (Mountain Bike, Speed, Gravel, Urbana) e acessórios para ciclistas.
-- **Paleta Visual Sugerida:** Tons escuros/neutros (ardósia/cinza escuro), branco para contraste e destaque em verde limão ou laranja neon esportivo.
-
-### 2.2 Objetivos Técnicos
-- Manter o catálogo de produtos estritamente separado do código HTML.
-- Consumir o catálogo local via `fetch('./data/products.json')`.
-- Renderizar os cards de produtos dinamicamente via JavaScript.
-- Implementar busca textual em tempo real **e/ou** filtro interativo por categoria.
-- Criar a página de documentação `/como-fiz` contendo o vídeo embedado.
-- Explicar no vídeo a viabilidade de hospedar a solução em **AWS S3 + CloudFront (CDN)** e como ferramentas de IA aceleram a experiência de compra.
+- **Nome da Loja:** PedalHub
+- **Nicho:** Bicicletas de alta performance (Mountain Bike, Speed, Urbana, Gravel) e equipamentos/acessórios para ciclistas.
+- **Paleta Visual:** Tons escuros/neutros (ardósia/cinza escuro), branco e detalhes em destaque esportivo (verde limão ou laranja neon).
+- **Originalidade:** Tema, catálogo, nomes e identidade 100% autorais e distintos dos exemplos de aula.
 
 ---
 
-## 3. Requisitos Funcionais Obrigatórios
+## 3. Requisitos Obrigatórios da Loja (MVP)
 
-| ID | Requisito | Critério de Aceite |
+| # | Requisito | Critério de Aceite |
 |:---|:---|:---|
-| **RF01** | Identidade Própria | Nome (**pedal-hub-ecommerce**), identidade visual e produtos próprios do nicho de ciclismo. |
-| **RF02** | Catálogo Externo | Dados persistidos exclusivamente no arquivo `data/products.json`. |
-| **RF03** | Mínimo de Produtos | Catálogo contendo no mínimo 8 produtos categorizados. |
-| **RF04** | Consumo via Fetch | O JavaScript deve obrigatoriamente carregar os dados via `fetch()`. |
-| **RF05** | Renderização Dinâmica | A vitrine é gerada em tempo de execução pelo JavaScript a partir do JSON. |
-| **RF06** | Sem Hardcode no HTML | O HTML não deve conter nenhum card de produto estático pré-escrito. |
-| **RF07** | Busca e Filtro | Vitrine com campo de busca por nome e botões/select de categorias funcionais. |
-| **RF08** | Site Estático | Estrutura estática (HTML5 semântico, CSS/Tailwind, JavaScript Vanilla). |
-| **RF09** | Hospedagem Gratuita | Deploy ativo em plataforma pública gratuita (GitHub Pages, Vercel ou Netlify). |
-| **RF10** | Página `/como-fiz` | Página acessível via menu/navegação dedicada à explicação do projeto. |
-| **RF11** | Vídeo Explicativo | Embed de vídeo (YouTube ou Loom) de 5 a 8 minutos detalhando as decisões técnicas. |
+| **RF01** | **Tema e Identidade Autoral** | Tema próprio (ciclismo), nome (**PedalHub**), cores e produtos originais. |
+| **RF02** | **Catálogo em JSON Desacoplado** | Catálogo persistido em `products.json` com no mínimo 6 itens (implementado com 8). |
+| **RF03** | **Consumo via `fetch`** | Leitura obrigatória do `products.json` por meio da API `fetch`. |
+| **RF04** | **Renderização Dinâmica** | Vitrine gerada inteiramente via JavaScript/TypeScript em tempo de execução. |
+| **RF05** | **Zero Hardcode no HTML** | É terminantemente proibido fixar cards de produtos diretamente no código HTML. |
+| **RF06** | **Busca OU Filtro por Categoria** | Campo de pesquisa textual em tempo real e/ou botões/select de categorias operacionais. |
+| **RF07** | **Site Estático** | Aplicação estática compilada (HTML5 semântico, Bootstrap 5 CDN, TypeScript via Vite). |
+| **RF08** | **Hospedagem Pública e Gratuita** | Deploy ativo em host estático gratuito (Vercel, Netlify ou GitHub Pages). |
+| **RF09** | **Página `/como-fiz`** | Rota/página dedicada acessível publicamente via menu de navegação. |
+| **RF10** | **Vídeo Explicativo** | Vídeo embutido (YouTube não listado ou Loom) detalhando decisões técnicas e arquitetura. |
 
 ---
 
-## 4. Estrutura do Catálogo (`data/products.json`)
+## 4. Opcionais e Diferenciais 
 
-O arquivo deve residir em `data/products.json` com a seguinte estrutura de dados:
+| # | Diferencial | Descrição |
+|:---|:---|:---|
+| **OP01** | **Carrinho de Compras** | Gerenciamento de itens em memória (adicionar, alterar quantidade, remover e subtotal). |
+| **OP02** | **Checkout Simulado** | Formulário de dados de entrega e modal de confirmação de pedido fictício. |
+| **OP03** | **Auto-hospedagem de Vídeo** | Execução de vídeo local/estático em vez de player embedado (vale bônus). |
+| **OP04** | **Dark Mode** | Alternância de tema claro/escuro via classe utilitária. |
+
+---
+
+## 5. Estrutura do Catálogo (`public/data/products.json`)
+
+Contrato oficial com 8 produtos (acima do mínimo de 6 exigido):
 
 ```json
 [
   {
     "id": 1,
-    "name": "Velox Trail Mountain Bike 29",
+    "name": "PedalHub Trail Mountain Bike 29",
     "category": "Mountain Bike",
     "price": 3299.90,
     "image": "[https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=800&q=80](https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=800&q=80)",
@@ -96,7 +87,7 @@ O arquivo deve residir em `data/products.json` com a seguinte estrutura de dados
   },
   {
     "id": 5,
-    "name": "Capacete Aerodinâmico Velox Protect",
+    "name": "Capacete Aerodinâmico PedalHub Protect",
     "category": "Acessórios",
     "price": 279.90,
     "image": "[https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80](https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80)",

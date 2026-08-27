@@ -1,122 +1,143 @@
-# Architecture & Technical Guidelines —  pedal-hub-ecommerce 
+# Arquitetura & Diretrizes Técnicas — PedalHub
 
 ## 1. Visão Geral da Stack
-- **Linguagem & Tipagem:** TypeScript (Vanilla TS via Vite) para tipagem estrita de dados e contratos.
-- **Estrutura & Semântica:** HTML5 semântico (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
-- **Estilização & UI:** Bootstrap 5 via **CDN** (não npm) — evita configuração extra de bundling de CSS e reduz risco no prazo curto.
-- **Armazenamento de Dados:** `data/products.json` desacoplado, simulando um endpoint/CMS Headless.
-- **Ferramenta de Build/Dev Server:** Vite (ambiente ágil, compilação rápida de TS e hot reload).
-- **Compilação final:** o TS é transpilado para JS puro no build — o resultado é um site 100% estático (HTML/CSS/JS), cumprindo RF05 mesmo usando ferramentas modernas.
+
+* **Linguagem & Tipagem:** TypeScript (Vanilla TS via Vite) em modo estrito (`strict: true`) para garantir tipagem dos contratos e dados da aplicação.
+
+* **Estrutura & Semântica:** HTML5 semântico (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
+
+* **Estilização & UI:** Bootstrap 5 via **CDN** (CSS e JS Bundle), utilizando o grid responsivo e componentes/utilitários quando apropriado. Customizações visuais devem preservar a identidade própria da PedalHub.
+
+* **Armazenamento de Dados:** `public/data/products.json` desacoplado do front-end e consumido via `fetch`, demonstrando em pequena escala o princípio de separação entre dados e apresentação utilizado em arquiteturas **Headless Commerce**.
+
+* **Ferramenta de Build & Dev Server:** Vite, responsável pelo ambiente de desenvolvimento, compilação do TypeScript, hot reload e geração dos arquivos estáticos para produção.
+
+* **Compilação Final:** O TypeScript é compilado para JavaScript durante o build, gerando os arquivos estáticos de produção em `dist/`. A aplicação não depende de um servidor backend próprio.
+
+* **Gerenciamento de Estado:** Estado mantido em memória no cliente para busca, filtros e funcionalidades opcionais, como o carrinho simulado. Não haverá banco de dados ou persistência de pedidos.
 
 ---
 
 ## 2. Estrutura de Diretórios
+
 ```text
- pedal-hub-ecommerce /
+pedal-hub-ecommerce/
+
 ├── .docs/
-│   ├── spec.md               # Requisitos e regras de negócio
-│   └── architecture.md       # Diretrizes técnicas e padrões
-├── data/
-│   └── products.json         # Catálogo autoral de bikes e acessórios
-├── public/                   # Assets públicos e estáticos (imagens, favicon)
+│   ├── spec.md               # Requisitos funcionais e regras de negócio
+│   └── architecture.md       # Decisões de arquitetura e padrões técnicos
+│
+├── public/
+│   ├── data/
+│   │   └── products.json     # Catálogo autoral de bikes e acessórios
+│   └── favicon.svg           # Ícone da aplicação
+│
 ├── src/
-│   ├── types.ts              # Interfaces e tipos (Product, Category, FilterState)
-│   ├── api.ts                # Camada de consumo de dados (fetchProducts)
-│   ├── dom.ts                # Funções de renderização de cards e manipulação do DOM
-│   └── main.ts                # Ponto de entrada, listeners de busca e filtros
-├── index.html                 # Página principal (Vitrine e filtros)
-├── como-fiz.html               # Página da entrega (/como-fiz com vídeo embed)
-├── vite.config.ts             # Configuração de build multi-página (ver seção 3)
-├── package.json
-├── tsconfig.json
-└── README.md                  # Instruções de setup e link de deploy
+│   ├── types.ts              # Interfaces e tipos (Product, CartItem, FilterState)
+│   ├── api.ts                # Camada de consumo assíncrono (fetchProducts)
+│   ├── dom.ts                # Funções de renderização da vitrine e do carrinho
+│   └── main.ts               # Inicialização, event listeners, filtros e ações
+│
+├── index.html                # Página principal (vitrine, busca, categorias e carrinho)
+│
+├── como-fiz.html             # Página com o vídeo explicativo da entrega
+│
+├── vite.config.ts            # Configuração do Vite e do build da aplicação
+│
+├── package.json              # Dependências e scripts do projeto
+│
+├── tsconfig.json             # Configurações do TypeScript
+│
+└── README.md                 # Instruções de execução local e link do deploy
 ```
 
 ---
 
-## 3. Build Multi-Página (crítico)
+## 3. Responsabilidades dos Módulos
 
-Por padrão o Vite builda apenas `index.html`. Como o desafio exige `/como-fiz` como página separada, é obrigatório declarar as duas entradas em `vite.config.ts`:
+### `types.ts`
 
-```ts
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
+Centraliza os contratos e tipos utilizados pela aplicação.
 
-export default defineConfig({
-  base: './', // garante caminhos relativos corretos em qualquer host estático
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        comoFiz: resolve(__dirname, 'como-fiz.html'),
-      },
-    },
-  },
-});
+Principais tipos:
+
+* `Product`;
+* `CartItem`;
+* `FilterState`.
+
+Não deve conter manipulação direta do DOM ou chamadas de API.
+
+### `api.ts`
+
+Responsável pelo acesso ao catálogo.
+
+Principal responsabilidade:
+
+* Implementar `fetchProducts()`;
+* Consumir `public/data/products.json` por meio de `fetch`;
+* Tratar erros de requisição;
+* Retornar os produtos para a aplicação.
+
+### `dom.ts`
+
+Responsável pela renderização e atualização da interface.
+
+Principais responsabilidades:
+
+* Renderizar cards de produtos;
+* Atualizar a vitrine após busca ou filtro;
+* Renderizar o carrinho, caso implementado;
+* Exibir estados vazios ou mensagens necessárias na interface.
+
+### `main.ts`
+
+Ponto de entrada da aplicação.
+
+Principais responsabilidades:
+
+* Inicializar a aplicação;
+* Carregar os produtos;
+* Registrar eventos da interface;
+* Controlar busca e filtros;
+* Coordenar as funções de `api.ts` e `dom.ts`;
+* Gerenciar o estado do carrinho, caso implementado.
+
+---
+
+## 4. Fluxo de Dados
+
+O fluxo principal da aplicação deverá seguir:
+
+```text
+products.json
+      ↓
+   fetch()
+      ↓
+    api.ts
+      ↓
+   Product[]
+      ↓
+    main.ts
+      ↓
+    dom.ts
+      ↓
+Interface da loja
 ```
 
-> Testar `npm run build && npm run preview` antes do deploy final é obrigatório — é o único jeito de garantir que `/como-fiz` existe no `dist/`.
+Os produtos não devem ser definidos diretamente no HTML. A vitrine deve ser construída dinamicamente a partir dos dados carregados do catálogo.
 
 ---
 
-## 4. Modelagem de Dados (`src/types.ts`)
+## 5. Princípios de Implementação
 
-```ts
-export interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  description: string;
-}
+* Manter responsabilidades separadas entre acesso aos dados, lógica da aplicação e apresentação.
+* Evitar código duplicado.
+* Evitar abstrações ou dependências desnecessárias.
+* Priorizar código simples e fácil de explicar.
+* Utilizar TypeScript para reduzir erros relacionados aos dados.
+* Utilizar HTML semântico.
+* Garantir responsividade da interface.
+* Manter os produtos desacoplados do HTML.
+* Não adicionar funcionalidades ou tecnologias que não tenham uma justificativa clara para o projeto.
 
-export type ProductList = Product[];
-```
-
-Mantém o contrato simples — sem campos que a spec não pede (evitar `stock`, `sku`, `rating` etc. se não forem usados em nenhuma feature real).
-
----
-
-## 5. Camada de Dados (`src/api.ts`)
-
-```ts
-import type { Product } from './types';
-
-export async function fetchProducts(): Promise<Product[]> {
-  const response = await fetch('data/products.json');
-  if (!response.ok) {
-    throw new Error(`Falha ao carregar catálogo: ${response.status}`);
-  }
-  return response.json();
-}
-```
-
-`main.ts` deve envolver a chamada em `try/catch` e renderizar um estado de erro simples na vitrine (ex.: "Não foi possível carregar os produtos") — sem isso, uma falha de rede quebra a página em branco, silenciosamente.
-
----
-
-## 6. Busca e Filtro
-
-Estado mantido em memória, sem lib externa (Redux, Zustand etc. seriam overengineering para este escopo):
-
-- `main.ts` guarda o array completo de produtos (`allProducts`) após o fetch.
-- Busca (input de texto) e/ou filtro (select de categoria) aplicam `.filter()` sobre `allProducts` e re-renderizam via `dom.ts`.
-- Um único evento (`input` ou `change`) dispara a re-renderização — não precisa de debounce dado o volume pequeno de dados (mínimo 6 produtos).
-
----
-
-## 7. Hospedagem / Deploy
-
-- **Recomendado:** Vercel ou Netlify (deploy direto do repositório Git, build automático via `vite build`, HTTPS gratuito).
-- Alternativa: GitHub Pages (requer ajustar `base` no `vite.config.ts` para o nome do repositório).
-- Publicar a URL final do `dist/` — validar que `/como-fiz` responde corretamente após o deploy (ver seção 3).
-
----
-
-## 8. Padrões de Código
-
-- TypeScript em modo `strict: true` no `tsconfig.json` — sem `any` implícito.
-- HTML semântico obrigatório: `<nav>` para filtros, `<main>` para vitrine, `<article>` por card de produto.
-- Acessibilidade mínima: `alt` em todas as imagens de produto, `<label>` associado ao input de busca/filtro.
-- Sem frameworks de estado, sem router, sem testes automatizados — fora do escopo e do prazo do desafio.
+> **Regra principal:** a arquitetura deve permanecer simples o suficiente para que todas as decisões possam ser explicadas e defendidas durante a apresentação técnica.

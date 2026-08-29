@@ -7,4 +7,12 @@ export interface Product {
   description: string;
 }
 
-export type ProductList = Product[];
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+export interface FilterState {
+  searchQuery: string;
+  selectedCategory: string;
+}

@@ -802,7 +802,7 @@
   <!-- Benefits Section -->
   <div class="container">
     <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-4">
-      
+
       <!-- Frete Grátis -->
       <div class="col">
         <div class="card h-100 border-0 shadow-sm rounded-4 p-3 text-center bg-white">
@@ -960,7 +960,7 @@
           </div>
         </div>
 
-        <button id="btn-checkout" class="btn w-100 py-2 fw-semibold mt-3" type="button" disabled>
+        <button id="btn-checkout" class="btn btn-warning text-dark w-100 py-2 fw-semibold mt-3" type="button" disabled>
           <i class="bi bi-check-circle me-2"></i>
           Finalizar Compra
         </button>
@@ -1074,6 +1074,25 @@
 
   <!-- Script de Entrada -->
   <script type="module" src="/src/main.ts"></script>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="cartToast" class="toast align-items-center text-bg-dark border border-warning" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i class="bi bi-check-circle-fill text-warning fs-5"></i>
+          <span id="toast-message">Produto adicionado ao carrinho!</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Fechar"></button>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script type="module" src="/src/main.ts"></script>
 </body>
+
 
 </html>

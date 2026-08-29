@@ -1,18 +1,17 @@
+export type ProductCategory = 'Bicicletas' | 'Acessórios' | 'Vestuário';
+
 export interface Product {
   id: number;
   name: string;
-  category: string;
-  price: number;
-  image: string;
   description: string;
+  price: number;
+  category: ProductCategory;
+  image: string;
+  rating: number;
+  inStock: boolean;
 }
 
 export interface CartItem {
   product: Product;
   quantity: number;
-}
-
-export interface FilterState {
-  searchQuery: string;
-  selectedCategory: string;
 }

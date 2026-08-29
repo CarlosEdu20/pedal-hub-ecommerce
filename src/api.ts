@@ -5,5 +5,6 @@ export async function fetchProducts(): Promise<Product[]> {
   if (!response.ok) {
     throw new Error(`Falha ao carregar catálogo: ${response.status}`);
   }
-  return response.json();
+  const data: Product[] = await response.json();
+  return data;
 }

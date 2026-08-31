@@ -255,21 +255,36 @@
 
         <form id="checkout-form">
           <div class="modal-body">
+            <!-- Nome -->
             <div class="mb-3">
               <label for="customer-name" class="form-label fw-semibold">Nome completo</label>
               <input type="text" class="form-control" id="customer-name" placeholder="Digite seu nome" required />
             </div>
 
+            <!-- E-mail para Comprovante (Novo Campo) -->
             <div class="mb-3">
-              <label for="customer-address" class="form-label fw-semibold">Endereço</label>
-              <textarea class="form-control" id="customer-address" rows="3" placeholder="Rua, número, bairro, cidade" required></textarea>
+              <label for="customer-email" class="form-label fw-semibold">E-mail para comprovante</label>
+              <input type="email" class="form-control" id="customer-email" placeholder="seu-email@exemplo.com"
+                autocomplete="email" required />
+              <div class="invalid-feedback" id="email-error">
+                Informe um e-mail válido (ex: nome@dominio.com).
+              </div>
             </div>
 
+            <!-- Endereço -->
+            <div class="mb-3">
+              <label for="customer-address" class="form-label fw-semibold">Endereço</label>
+              <textarea class="form-control" id="customer-address" rows="3" placeholder="Rua, número, bairro, cidade"
+                required></textarea>
+            </div>
+
+            <!-- Forma de Pagamento -->
             <div class="mb-3">
               <label class="form-label fw-semibold">Forma de pagamento</label>
               <div class="d-flex flex-column gap-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="payment-method" id="payment-pix" value="PIX" checked />
+                  <input class="form-check-input" type="radio" name="payment-method" id="payment-pix" value="PIX"
+                    checked />
                   <label class="form-check-label" for="payment-pix">PIX</label>
                 </div>
                 <div class="form-check">
@@ -279,6 +294,7 @@
               </div>
             </div>
 
+            <!-- Total -->
             <div class="alert alert-warning mb-0 d-flex justify-content-between align-items-center">
               <span class="fw-semibold">Total:</span>
               <strong id="modal-checkout-total">R$ 0,00</strong>
@@ -290,6 +306,73 @@
             <button type="submit" class="btn btn-warning text-dark fw-semibold">Confirmar pedido</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal de Comprovante de Compra (Sucesso) -->
+  <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        
+        <!-- Cabeçalho do Card -->
+        <div class="modal-header bg-dark text-white border-bottom border-warning border-opacity-25 py-3">
+          <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="receiptModalLabel">
+            <i class="bi bi-patch-check-fill text-warning fs-4"></i>
+            Pedido Confirmado
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+
+        <!-- Corpo do Card / Recibo -->
+        <div class="modal-body p-4 bg-light">
+          <div class="text-center mb-4">
+            <div class="display-5 text-success mb-2">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Obrigado pela sua compra!</h5>
+            <p class="text-muted small mb-0">Um comprovante detalhado foi gerado com sucesso.</p>
+          </div>
+
+          <!-- Card de Detalhes -->
+          <div class="card border-0 shadow-sm rounded-3 p-3 bg-white mb-3">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2 small">
+              <span class="text-muted">Protocolo:</span>
+              <strong class="text-dark font-monospace" id="receipt-protocol">#000000</strong>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2 small">
+              <span class="text-muted">Cliente:</span>
+              <span class="fw-semibold text-dark text-truncate" style="max-width: 200px;" id="receipt-name">-</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2 small">
+              <span class="text-muted">E-mail:</span>
+              <span class="fw-semibold text-dark text-truncate" style="max-width: 200px;" id="receipt-email">-</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2 small">
+              <span class="text-muted">Pagamento:</span>
+              <span class="badge bg-dark text-warning fw-semibold" id="receipt-payment">PIX</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <span class="fw-bold text-dark">Total Pago:</span>
+              <strong class="fs-5 text-warning" id="receipt-total">R$ 0,00</strong>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <!-- Rodapé -->
+        <div class="modal-footer bg-white border-0 py-3">
+          <button type="button" class="btn btn-warning w-100 fw-bold py-2 shadow-sm" data-bs-dismiss="modal">
+            <i class="bi bi-bicycle me-1"></i> Continuar Comprando
+          </button>
+        </div>
+
       </div>
     </div>
   </div>

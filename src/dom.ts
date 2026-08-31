@@ -1,4 +1,4 @@
-import { Product } from './types';
+import { Product, CartItem } from './types';
 
 // Utilitário para formatar moeda com segurança
 export const formatCurrency = (value: number = 0): string => {
@@ -81,5 +81,72 @@ export const renderProducts = (products: Product[]): void => {
       </div>
       `;
     })
+    .join('');
+};
+
+
+export const renderCart = (cart: CartItem[]): void => {
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalElement = document.getElementById('cart-total');
+  const cartCountElement = document.getElementById('cart-count');
+
+  // Calcula totais
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+
+  // Atualiza o contador (Badge) no topo da página
+  if (cartCountElement) {
+    cartCountElement.textContent = totalCount.toString();
+    if (totalCount > 0) {
+      cartCountElement.classList.remove('d-none');
+    } else {
+      cartCountElement.classList.add('d-none');
+    }
+  }
+
+  // Atualiza valor total
+  if (cartTotalElement) {
+    cartTotalElement.textContent = formatCurrency(totalPrice);
+  }
+
+  if (!cartItemsContainer) return;
+
+  // Estado vazio
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `
+      <div class="cart-empty-message text-center py-5 text-muted">
+        <i class="bi bi-cart-x fs-1 d-block mb-2 text-secondary"></i>
+        Seu carrinho está vazio
+      </div>
+    `;
+    return;
+  }
+
+  // Renderiza a lista travando a largura máxima para não gerar scroll horizontal
+  cartItemsContainer.innerHTML = cart
+    .map(
+      ({ product, quantity }) => `
+      <div class="card mb-3 border-0 bg-light w-100">
+        <div class="card-body p-2 d-flex align-items-center gap-2">
+          <img src="${product.image}" alt="${product.name}" class="rounded object-fit-cover flex-shrink-0" style="width: 50px; height: 50px;">
+          
+          <div class="flex-grow-1 min-w-0" style="overflow: hidden;">
+            <h6 class="mb-0 text-truncate small fw-bold" title="${product.name}">${product.name}</h6>
+            <span class="text-muted small">${formatCurrency(product.price)}</span>
+            
+            <div class="d-flex align-items-center gap-2 mt-1">
+              <button class="btn btn-outline-secondary btn-sm px-2 py-0" data-action="decrease" data-id="${product.id}">-</button>
+              <span class="small fw-bold px-1">${quantity}</span>
+              <button class="btn btn-outline-secondary btn-sm px-2 py-0" data-action="increase" data-id="${product.id}">+</button>
+            </div>
+          </div>
+
+          <button class="btn btn-link text-danger p-1 flex-shrink-0 ms-auto" data-action="remove" data-id="${product.id}" title="Remover item">
+            <i class="bi bi-trash fs-5 pointer-events-none"></i>
+          </button>
+        </div>
+      </div>
+    `
+    )
     .join('');
 };

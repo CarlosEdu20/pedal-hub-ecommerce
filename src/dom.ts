@@ -89,12 +89,15 @@ export const renderCart = (cart: CartItem[]): void => {
   const cartItemsContainer = document.getElementById('cart-items');
   const cartTotalElement = document.getElementById('cart-total');
   const cartCountElement = document.getElementById('cart-count');
+  const btnCheckout = document.getElementById('btn-checkout') as HTMLButtonElement | null;
+  const modalCheckoutTotal = document.getElementById('modal-checkout-total');
 
-  // Calcula totais
+  // Cálculos de quantidade e preço
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const formattedTotal = formatCurrency(totalPrice);
 
-  // Atualiza o contador (Badge) no topo da página
+  // 1. Atualiza Badge no cabeçalho
   if (cartCountElement) {
     cartCountElement.textContent = totalCount.toString();
     if (totalCount > 0) {
@@ -104,14 +107,18 @@ export const renderCart = (cart: CartItem[]): void => {
     }
   }
 
-  // Atualiza valor total
-  if (cartTotalElement) {
-    cartTotalElement.textContent = formatCurrency(totalPrice);
+  // 2. Atualiza os totais (no offcanvas e no modal)
+  if (cartTotalElement) cartTotalElement.textContent = formattedTotal;
+  if (modalCheckoutTotal) modalCheckoutTotal.textContent = formattedTotal;
+
+  // 3. Bloqueia o botão se o carrinho estiver vazio
+  if (btnCheckout) {
+    btnCheckout.disabled = cart.length === 0;
   }
 
   if (!cartItemsContainer) return;
 
-  // Estado vazio
+  // 4. Estado vazio
   if (cart.length === 0) {
     cartItemsContainer.innerHTML = `
       <div class="cart-empty-message text-center py-5 text-muted">
@@ -122,7 +129,7 @@ export const renderCart = (cart: CartItem[]): void => {
     return;
   }
 
-  // Renderiza a lista travando a largura máxima para não gerar scroll horizontal
+  // 5. Renderização dos itens
   cartItemsContainer.innerHTML = cart
     .map(
       ({ product, quantity }) => `

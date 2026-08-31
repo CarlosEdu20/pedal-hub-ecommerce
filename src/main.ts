@@ -7,6 +7,9 @@ let cart: CartItem[] = [];
 let selectedCategory: string = 'all';
 let searchTerm: string = '';
 
+// Expressão regular para validação de formato de e-mail 
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
 // 2. Lógica de Filtragem e Busca
 const applyFilters = (): void => {
   const filtered = allProducts.filter((product) => {
@@ -107,7 +110,6 @@ const setupCartListeners = (): void => {
   const productsGrid = document.getElementById('products-grid');
   const cartItemsContainer = document.getElementById('cart-items');
 
-  // Adicionar ao carrinho a partir da vitrine
   if (productsGrid) {
     productsGrid.addEventListener('click', (event) => {
       const target = (event.target as HTMLElement).closest('.btn-add-cart') as HTMLButtonElement | null;
@@ -118,7 +120,6 @@ const setupCartListeners = (): void => {
     });
   }
 
-  // Ações dentro do offcanvas (aumentar, diminuir, remover)
   if (cartItemsContainer) {
     cartItemsContainer.addEventListener('click', (event) => {
       const actionElement = (event.target as HTMLElement).closest('[data-action]') as HTMLElement | null;
@@ -136,7 +137,103 @@ const setupCartListeners = (): void => {
   }
 };
 
-// 5. Inicialização
+//  Fluxo de Checkout e Emissão de Comprovante
+const setupCheckout = (): void => {
+  const btnCheckout = document.getElementById('btn-checkout');
+  const checkoutForm = document.getElementById('checkout-form') as HTMLFormElement | null;
+  const offcanvasElement = document.getElementById('cartOffcanvas');
+  const checkoutModalElement = document.getElementById('checkoutModal');
+  const receiptModalElement = document.getElementById('receiptModal');
+  const emailInput = document.getElementById('customer-email') as HTMLInputElement | null;
+
+  // Abertura do modal a partir do carrinho
+  if (btnCheckout) {
+    btnCheckout.addEventListener('click', () => {
+      if (cart.length === 0) return;
+
+      if (offcanvasElement && (window as any).bootstrap) {
+        const bsOffcanvas = (window as any).bootstrap.Offcanvas.getInstance(offcanvasElement);
+        if (bsOffcanvas) bsOffcanvas.hide();
+      }
+
+      if (checkoutModalElement && (window as any).bootstrap) {
+        const bsModal = (window as any).bootstrap.Modal.getOrCreateInstance(checkoutModalElement);
+        bsModal.show();
+      }
+    });
+  }
+
+  // Validação dinâmica do e-mail ao digitar
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      const isValid = EMAIL_REGEX.test(emailInput.value.trim());
+      if (emailInput.value.trim() === '' || isValid) {
+        emailInput.classList.remove('is-invalid');
+      } else {
+        emailInput.classList.add('is-invalid');
+      }
+    });
+  }
+
+  // Submissão do pedido e abertura do Card de Comprovante
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const nameInput = document.getElementById('customer-name') as HTMLInputElement | null;
+      const emailValue = emailInput ? emailInput.value.trim() : '';
+
+      // Validação estrita por Regex
+      if (!EMAIL_REGEX.test(emailValue)) {
+        if (emailInput) {
+          emailInput.classList.add('is-invalid');
+          emailInput.focus();
+        }
+        return;
+      }
+
+      const customerName = nameInput?.value.trim() || 'Cliente';
+      const orderProtocol = Math.floor(100000 + Math.random() * 900000);
+      const totalAmount = document.getElementById('modal-checkout-total')?.textContent || 'R$ 0,00';
+      
+      const paymentChecked = document.querySelector('input[name="payment-method"]:checked') as HTMLInputElement | null;
+      const paymentMethod = paymentChecked ? paymentChecked.value : 'PIX';
+
+      // 1. Preenche os dados do Card de Comprovante
+      const receiptProtocol = document.getElementById('receipt-protocol');
+      const receiptName = document.getElementById('receipt-name');
+      const receiptEmail = document.getElementById('receipt-email');
+      const receiptPayment = document.getElementById('receipt-payment');
+      const receiptTotal = document.getElementById('receipt-total');
+
+      if (receiptProtocol) receiptProtocol.textContent = `#${orderProtocol}`;
+      if (receiptName) receiptName.textContent = customerName;
+      if (receiptEmail) receiptEmail.textContent = emailValue;
+      if (receiptPayment) receiptPayment.textContent = paymentMethod;
+      if (receiptTotal) receiptTotal.textContent = totalAmount;
+
+      // 2. Fecha o modal de formulário
+      if (checkoutModalElement && (window as any).bootstrap) {
+        const bsCheckoutModal = (window as any).bootstrap.Modal.getInstance(checkoutModalElement);
+        if (bsCheckoutModal) bsCheckoutModal.hide();
+      }
+
+      // 3. Abre o Card de Comprovante estilizado
+      if (receiptModalElement && (window as any).bootstrap) {
+        const bsReceiptModal = (window as any).bootstrap.Modal.getOrCreateInstance(receiptModalElement);
+        bsReceiptModal.show();
+      }
+
+      // 4. Limpa o formulário e zera o carrinho
+      checkoutForm.reset();
+      if (emailInput) emailInput.classList.remove('is-invalid');
+      cart = [];
+      renderCart(cart);
+    });
+  }
+};
+
+// 6. Inicialização
 const init = async (): Promise<void> => {
   try {
     const response = await fetch('/data/products.json');
@@ -147,6 +244,7 @@ const init = async (): Promise<void> => {
     renderCart(cart);
     setupFilters();
     setupCartListeners();
+    setupCheckout();
   } catch (error) {
     console.error('Erro ao carregar o catálogo:', error);
   }

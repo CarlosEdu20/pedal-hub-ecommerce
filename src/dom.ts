@@ -39,6 +39,9 @@ export const renderProducts = (products: Product[]): void => {
               alt="${product.name}" 
               style="height: 320px;"
               loading="lazy"
+              decoding="async"
+              width="600"
+              height="320"
             />
             <span class="position-absolute top-0 start-0 m-3 badge bg-dark bg-opacity-75 text-warning border border-secondary border-opacity-50 rounded-pill px-2 py-1 small">
               ${category}
@@ -122,7 +125,7 @@ export const renderCart = (cart: CartItem[]): void => {
       ({ product, quantity }) => `
       <div class="card mb-3 border-0 bg-light w-100">
         <div class="card-body p-2 d-flex align-items-center gap-2">
-          <img src="${product.image}" alt="${product.name}" class="rounded object-fit-cover flex-shrink-0" style="width: 50px; height: 50px;">
+          <img src="${product.image}" alt="${product.name}" class="rounded object-fit-cover flex-shrink-0" style="width: 50px; height: 50px;" decoding="async">
           
           <div class="flex-grow-1 min-w-0" style="overflow: hidden;">
             <h6 class="mb-0 text-truncate small fw-bold" title="${product.name}">${product.name}</h6>

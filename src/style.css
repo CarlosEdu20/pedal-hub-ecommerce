@@ -72,7 +72,7 @@
     .hero-section {
       background:
         linear-gradient(15deg, rgba(26, 26, 26, 0.82) 0%, rgba(45, 45, 45, 0.75) 50%, rgba(26, 26, 26, 0.90) 100%),
-        url('/public/images/banners/ciclistas.jpg') center center / cover no-repeat;
+        url('/public/images/banners/ciclistas.webp') center center / cover no-repeat;
       background-attachment: fixed;
       color: var(--light-text);
       padding: 4.5rem 2rem;

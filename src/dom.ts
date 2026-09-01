@@ -25,9 +25,6 @@ export const renderProducts = (products: Product[]): void => {
 
   grid.innerHTML = products
     .map((product) => {
-      // Garante valor padrão caso a propriedade não venha no JSON
-      const rating = typeof product.rating === 'number' ? product.rating.toFixed(1) : '5.0';
-      const inStock = product.inStock ?? true;
       const price = product.price ?? 0;
       const category = product.category || 'Geral';
       const image = product.image || 'https://placehold.co/600x400?text=Sem+Foto';
@@ -40,7 +37,7 @@ export const renderProducts = (products: Product[]): void => {
               src="${image}" 
               class="card-img-top object-fit-cover" 
               alt="${product.name}" 
-              style="height: 220px;"
+              style="height: 320px;"
               loading="lazy"
             />
             <span class="position-absolute top-0 start-0 m-3 badge bg-dark bg-opacity-75 text-warning border border-secondary border-opacity-50 rounded-pill px-2 py-1 small">
@@ -49,15 +46,6 @@ export const renderProducts = (products: Product[]): void => {
           </div>
 
           <div class="card-body d-flex flex-column p-4">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <small class="text-secondary fw-semibold">
-                <i class="bi bi-star-fill text-warning me-1"></i>${rating}
-              </small>
-              <span class="badge ${inStock ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'} rounded-pill small">
-                ${inStock ? 'Em estoque' : 'Esgotado'}
-              </span>
-            </div>
-            
             <h5 class="card-title fw-bold text-dark mb-2 fs-6">${product.name}</h5>
             <p class="card-text text-secondary small flex-grow-1 mb-3">${product.description || ''}</p>
             
@@ -70,7 +58,6 @@ export const renderProducts = (products: Product[]): void => {
                 class="btn btn-warning text-dark fw-semibold rounded-pill px-3 py-2 btn-add-cart d-flex align-items-center gap-1 shadow-sm"
                 data-id="${product.id}"
                 type="button"
-                ${!inStock ? 'disabled' : ''}
               >
                 <i class="bi bi-cart-plus"></i>
                 <span>Comprar</span>

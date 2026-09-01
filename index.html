@@ -15,41 +15,34 @@
 
 <body class="d-flex flex-column min-vh-100">
   <!-- Top Bar / Anúncio -->
-  <div class="top-bar">
-    <div class="top-bar-text">
-      <div class="top-bar-item">
-        <i class="bi bi-truck"></i>
-        <span><strong>Frete Grátis</strong> acima de R$ 299</span>
-      </div>
-      <div class="top-bar-item">
-        <i class="bi bi-credit-card"></i>
-        <span>Até <strong>10x sem juros</strong></span>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Navbar -->
-  <header class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <i class="bi bi-bicycle text-warning fs-3"></i>
-        <span>Pedal<span class="text-warning">Hub</span></span>
+  <header class="navbar navbar-dark sticky-top py-2">
+    <div class="container-fluid px-3 px-md-4 d-flex align-items-center justify-content-between flex-nowrap">
+
+      <!-- Logo / Marca -->
+      <a class="navbar-brand d-flex align-items-center gap-2 me-0 flex-shrink-0" href="#">
+        <i class="bi bi-bicycle text-warning fs-4"></i>
+        <span class="fw-bold">Pedal<span class="text-warning">Hub</span></span>
       </a>
 
-      <div class="d-flex align-items-center gap-4">
-        <!-- 1. Botão Como Fiz -->
+      <!-- Grupo de Botões (Nunca quebra linha) -->
+      <div class="d-flex align-items-center gap-2 gap-sm-3 ms-auto flex-nowrap">
+        <!-- 1. Botão Como Fiz (Ícone sempre visível, texto visível a partir de telas sm) -->
         <a href="/como-fiz.html"
-          class="btn btn-outline-warning d-inline-flex align-items-center gap-2 px-3 py-2 fw-semibold">
-          <i class="bi bi-journal-code"></i>
-          <span>Como Fiz</span>
+          class="btn btn-outline-warning rounded-pill d-inline-flex align-items-center gap-1 gap-sm-2 px-2 px-sm-3 py-1 py-sm-2 fw-semibold"
+          title="Como Fiz">
+          <i class="bi bi-play-circle fs-5"></i>
+          <span class="d-none d-sm-inline small">Como Fiz</span>
         </a>
 
-        <!-- 2. Botão do Carrinho -->
+        <!-- 2. Botão Carrinho -->
         <button id="btn-cart-toggle"
-          class="btn btn-warning position-relative d-inline-flex align-items-center justify-content-center p-2"
+          class="btn btn-warning rounded-circle position-relative d-inline-flex align-items-center justify-content-center btn-icon"
           type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas"
           aria-label="Abrir carrinho">
-          <i class="bi bi-cart3 fs-5"></i>
+          <i class="bi bi-cart3"></i>
           <span id="cart-count"
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
             0
@@ -57,12 +50,13 @@
         </button>
 
         <!-- 3. Botão GitHub -->
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-          class="btn btn-outline-secondary text-light d-inline-flex align-items-center justify-content-center p-2"
+        <a href="https://github.com/CarlosEdu20/pedal-hub-ecommerce" target="_blank" rel="noopener noreferrer"
+          class="btn btn-outline-secondary text-light rounded-circle d-inline-flex align-items-center justify-content-center btn-icon"
           title="Ver Repositório no GitHub">
-          <i class="bi bi-github fs-5"></i>
+          <i class="bi bi-github"></i>
         </a>
       </div>
+
     </div>
   </header>
 
@@ -93,55 +87,55 @@
   </section>
 
   <!-- Benefits Section -->
-  <div class="container">
-    <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-lg-4">
-
-      <!-- Frete Grátis -->
-      <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 p-3 text-center bg-white">
-          <div class="text-warning fs-2 mb-2">
-            <i class="bi bi-truck"></i>
-          </div>
-          <h6 class="fw-bold mb-1 text-dark">Frete Grátis</h6>
-          <small class="text-secondary">Acima de R$ 299</small>
+  <section class="container my-5">
+  <div class="row g-3 g-lg-4">
+    
+    <!-- Card 1: Pré-montagem e Regulagem -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center bg-white feature-card">
+        <div class="d-inline-flex align-items-center justify-content-center bg-warning-subtle text-warning rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
+          <i class="bi bi-tools fs-4"></i>
         </div>
+        <h6 class="fw-bold text-dark mb-1">Bike Pré-Montada</h6>
+        <p class="text-secondary small mb-0">Revisada e pré-regulada por mecânicos especializados.</p>
       </div>
-
-      <!-- Garantia Oficial -->
-      <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 p-3 text-center bg-white">
-          <div class="text-warning fs-2 mb-2">
-            <i class="bi bi-shield-check"></i>
-          </div>
-          <h6 class="fw-bold mb-1 text-dark">Garantia Oficial</h6>
-          <small class="text-secondary">Todos os produtos</small>
-        </div>
-      </div>
-
-      <!-- Compra Segura -->
-      <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 p-3 text-center bg-white">
-          <div class="text-warning fs-2 mb-2">
-            <i class="bi bi-lock"></i>
-          </div>
-          <h6 class="fw-bold mb-1 text-dark">Compra 100% Segura</h6>
-          <small class="text-secondary">Dados protegidos</small>
-        </div>
-      </div>
-
-      <!-- Suporte -->
-      <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 p-3 text-center bg-white">
-          <div class="text-warning fs-2 mb-2">
-            <i class="bi bi-headset"></i>
-          </div>
-          <h6 class="fw-bold mb-1 text-dark">Suporte Especializado</h6>
-          <small class="text-secondary">Atendimento 24/7</small>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Card 2: Peças Originais -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center bg-white feature-card">
+        <div class="d-inline-flex align-items-center justify-content-center bg-warning-subtle text-warning rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
+          <i class="bi bi-patch-check-fill fs-4"></i>
+        </div>
+        <h6 class="fw-bold text-dark mb-1">Peças 100% Originais</h6>
+        <p class="text-secondary small mb-0">Componentes oficiais Shimano, Specialized, Caloi e Oggi.</p>
+      </div>
+    </div>
+
+    <!-- Card 3: Envio Especial para Bicicletas -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center bg-white feature-card">
+        <div class="d-inline-flex align-items-center justify-content-center bg-warning-subtle text-warning rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
+          <i class="bi bi-box-seam-fill fs-4"></i>
+        </div>
+        <h6 class="fw-bold text-dark mb-1">Envio Protegido</h6>
+        <p class="text-secondary small mb-0">Embalagem reforçada e transporte seguro anti-impacto.</p>
+      </div>
+    </div>
+
+    <!-- Card 4: Consultoria Técnica -->
+    <div class="col-12 col-sm-6 col-lg-3">
+  <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center bg-white feature-card">
+    <div class="d-inline-flex align-items-center justify-content-center bg-warning-subtle text-warning rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
+      <i class="bi bi-arrow-repeat fs-4"></i>
+    </div>
+    <h6 class="fw-bold text-dark mb-1">Troca Descomplicada</h6>
+    <p class="text-secondary small mb-0">Até 30 dias para troca de numeração de vestuário e compatibilidade de peças.</p>
   </div>
+</div>
+
+  </div>
+</section>
 
   <!-- Main Content -->
   <main class="container flex-grow-1 py-4">
@@ -162,29 +156,31 @@
 
         <!-- Category Filters -->
         <div class="col-12 col-md-6">
-          <label class="form-label fw-bold mb-2">
-            <i class="bi bi-funnel"></i> Categorias
+          <label class="form-label fw-bold small text-dark d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-funnel text-warning"></i>
+            <span>Categorias</span>
           </label>
-          <div class="d-flex flex-wrap gap-2" id="category-filters">
-            <button class="filter-category-btn active filter-btn" data-category="all">
-              <i class="bi bi-collection"></i>
-              Todos
+
+          <!-- Linha Única no Mobile (overflow-x-auto) / Flex no Desktop (flex-md-wrap) -->
+          <div class="d-flex flex-nowrap flex-md-wrap gap-2 overflow-x-auto pb-2 pb-md-0" id="category-filters">
+            <button class="btn btn-warning rounded-pill btn-sm px-3 py-2 fw-semibold text-nowrap flex-shrink-0 active"
+              data-category="all">
+              <i class="bi bi-grid-fill me-1"></i> Todos
             </button>
-            <button class="filter-category-btn filter-btn" data-category="Bicicletas">
-              <i class="bi bi-bicycle"></i>
-              Bicicletas
+            <button class="btn btn-outline-dark rounded-pill btn-sm px-3 py-2 fw-semibold text-nowrap flex-shrink-0"
+              data-category="Bicicletas">
+              <i class="bi bi-bicycle me-1"></i> Bicicletas
             </button>
-            <button class="filter-category-btn filter-btn" data-category="Acessórios">
-              <i class="bi bi-tools"></i>
-              Acessórios
+            <button class="btn btn-outline-dark rounded-pill btn-sm px-3 py-2 fw-semibold text-nowrap flex-shrink-0"
+              data-category="Acessórios">
+              <i class="bi bi-tools me-1"></i> Acessórios
             </button>
-            <button class="filter-category-btn filter-btn" data-category="Vestuário">
-              <i class="bi bi-person-badge"></i>
-              Vestuário
+            <button class="btn btn-outline-dark rounded-pill btn-sm px-3 py-2 fw-semibold text-nowrap flex-shrink-0"
+              data-category="Vestuário">
+              <i class="bi bi-person-badge me-1"></i> Vestuário
             </button>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Feedback States -->
@@ -280,17 +276,96 @@
 
             <!-- Forma de Pagamento -->
             <div class="mb-3">
-              <label class="form-label fw-semibold">Forma de pagamento</label>
-              <div class="d-flex flex-column gap-2">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="payment-method" id="payment-pix" value="PIX"
-                    checked />
-                  <label class="form-check-label" for="payment-pix">PIX</label>
+              <label class="form-label small fw-semibold text-dark mb-2">Forma de pagamento</label>
+              <div class="row g-2">
+
+                <!-- Opção PIX -->
+                <div class="col-6">
+                  <input type="radio" class="btn-check payment-radio" name="payment-method" id="pay-pix" value="PIX"
+                    checked>
+                  <label class="btn payment-card w-100 p-3 text-start rounded-3 h-100" for="pay-pix">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                      <div class="payment-icon bg-warning-subtle text-warning">
+                        <i class="bi bi-qr-code fs-5"></i>
+                      </div>
+                      <span
+                        class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-1"
+                        style="font-size: 0.65rem;">
+                        Instantâneo
+                      </span>
+                    </div>
+                    <span class="d-block fw-bold text-dark fs-6">PIX</span>
+                    <small class="text-secondary d-block" style="font-size: 0.75rem;">Aprovação imediata</small>
+                  </label>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="payment-method" id="payment-card" value="Cartão" />
-                  <label class="form-check-label" for="payment-card">Cartão</label>
+
+                <!-- Opção Cartão -->
+                <div class="col-6">
+                  <input type="radio" class="btn-check payment-radio" name="payment-method" id="pay-card"
+                    value="Cartão de Crédito">
+                  <label class="btn payment-card w-100 p-3 text-start rounded-3 h-100" for="pay-card">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                      <div class="payment-icon bg-warning-subtle text-warning">
+                        <i class="bi bi-credit-card-2-front fs-5"></i>
+                      </div>
+                      <span
+                        class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill px-2 py-1"
+                        style="font-size: 0.65rem;">
+                        Até 12x
+                      </span>
+                    </div>
+                    <span class="d-block fw-bold text-dark fs-6">Cartão</span>
+                    <small class="text-secondary d-block" style="font-size: 0.75rem;">Crédito ou Débito</small>
+                  </label>
                 </div>
+
+              </div>
+            </div>
+
+            <!-- Área Dinâmica: Detalhes do PIX -->
+            <div id="pix-fields" class="p-3 bg-light rounded-3 border border-light-subtle mb-3">
+              <div class="d-flex align-items-center gap-2 text-dark mb-1">
+                <i class="bi bi-info-circle-fill text-warning"></i>
+                <span class="small fw-bold">Pagamento via PIX Copia e Cola</span>
+              </div>
+              <p class="text-secondary small mb-0" style="font-size: 0.8rem;">
+                Ao confirmar o pedido, um código PIX e QR Code serão gerados no seu comprovante para pagamento com
+                compensação imediata.
+              </p>
+            </div>
+
+            <!-- Área Dinâmica: Campos do Cartão de Crédito (Inicialmente Oculto) -->
+            <div id="card-fields" class="p-3 bg-light rounded-3 border border-light-subtle mb-3 d-none">
+              <div class="mb-2">
+                <label for="card-number" class="form-label small fw-semibold text-dark mb-1">Número do cartão</label>
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-white"><i class="bi bi-credit-card text-muted"></i></span>
+                  <input type="text" class="form-control" id="card-number" placeholder="0000 0000 0000 0000"
+                    maxlength="19">
+                </div>
+              </div>
+
+              <div class="row g-2 mb-2">
+                <div class="col-7">
+                  <label for="card-expiry" class="form-label small fw-semibold text-dark mb-1">Validade</label>
+                  <input type="text" class="form-control form-control-sm" id="card-expiry" placeholder="MM/AA"
+                    maxlength="5">
+                </div>
+                <div class="col-5">
+                  <label for="card-cvv" class="form-label small fw-semibold text-dark mb-1">CVV</label>
+                  <input type="text" class="form-control form-control-sm" id="card-cvv" placeholder="123" maxlength="4">
+                </div>
+              </div>
+
+              <div>
+                <label for="card-installments" class="form-label small fw-semibold text-dark mb-1">Parcelamento</label>
+                <select class="form-select form-select-sm" id="card-installments">
+                  <option value="1">1x à vista (sem juros)</option>
+                  <option value="2">2x sem juros</option>
+                  <option value="3">3x sem juros</option>
+                  <option value="6">6x sem juros</option>
+                  <option value="12">12x sem juros</option>
+                </select>
               </div>
             </div>
 
@@ -315,7 +390,7 @@
   <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-        
+
         <!-- Cabeçalho do Card -->
         <div class="modal-header bg-dark text-white border-bottom border-warning border-opacity-25 py-3">
           <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="receiptModalLabel">
@@ -363,7 +438,7 @@
             </div>
           </div>
 
-          
+
         </div>
 
         <!-- Rodapé -->
@@ -378,102 +453,111 @@
   </div>
 
   <!-- Footer -->
-  <footer class="mt-auto py-5 bg-dark text-light border-top border-secondary border-opacity-25">
-    <div class="container">
-      <div class="row g-4 justify-content-between">
+  <!-- Footer com Maior Legibilidade e Botão Centralizado -->
+  <!-- Footer Otimizado para Mobile e Desktop -->
+  <footer class="bg-dark text-light pt-5 pb-4 border-top border-secondary border-opacity-25">
+    <div class="container px-3 px-sm-4">
 
-        <!-- Coluna 1: Marca e Descrição -->
-        <div class="col-12 col-md-4">
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <i class="bi bi-bicycle text-warning fs-4"></i>
-            <span class="fs-5 fw-bold text-white">Pedal<span class="text-warning">Hub</span></span>
+      <!-- Linha Principal de Conteúdo -->
+      <div class="row g-4 justify-content-between align-items-start">
+
+        <!-- Coluna 1: Sobre PedalHub -->
+        <div class="col-12 col-lg-4 text-center text-lg-start">
+          <div class="d-inline-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-bicycle text-warning fs-2"></i>
+            <span class="fs-3 fw-bold text-white">Pedal<span class="text-warning">Hub</span></span>
           </div>
-          <p class="small text-light-emphasis mb-0" style="line-height: 1.6; color: #cfd4da !important;">
+          <p class="small text-white-50 mx-auto mx-lg-0 mb-0" style="max-width: 420px; line-height: 1.6;">
             Vitrine de e-commerce moderna com renderização dinâmica, carrinho interativo e catálogo desacoplado via
             JSON. Desenvolvido para demonstração técnica e portfólio.
           </p>
         </div>
 
-        <!-- Coluna 2: Stack Técnica -->
-        <div class="col-12 col-md-4 col-lg-4 text-center me-auto">
+        <!-- Coluna 2: Stack Técnica (Compacta em formato de chips no mobile) -->
+        <div class="col-12 col-md-6 col-lg-4">
           <h6
-            class="text-warning fw-bold text-uppercase mb-3 d-flex align-items-center justify-content-center gap-2 small">
-            <i class="bi bi-code-slash"></i>
-            Stack Técnica
+            class="text-warning fw-bold text-uppercase small d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-3">
+            <i class="bi bi-code-slash"></i> Stack Técnica
           </h6>
-
-          <div class="row row-cols-2 g-2 mx-auto" style="max-width: 300px;">
-            <div class="col">
+          <div class="row g-2">
+            <div class="col-6">
               <div
-                class="p-2 border border-secondary border-opacity-25 rounded text-center small text-light bg-black bg-opacity-50">
-                <i class="bi bi-filetype-tsx text-warning d-block mb-1 fs-6"></i>
-                <span>TypeScript</span>
+                class="p-2 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 d-flex align-items-center justify-content-center gap-2">
+                <span class="fw-bold text-warning"
+                  style="font-family: monospace; font-size: 0.85rem;">&lt;TS/&gt;</span>
+                <span class="text-white small fw-medium">TypeScript</span>
               </div>
             </div>
-            <div class="col">
+            <div class="col-6">
               <div
-                class="p-2 border border-secondary border-opacity-25 rounded text-center small text-light bg-black bg-opacity-50">
-                <i class="bi bi-lightning-charge-fill text-warning d-block mb-1 fs-6"></i>
-                <span>Vite</span>
+                class="p-2 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-lightning-charge-fill text-warning"></i>
+                <span class="text-white small fw-medium">Vite</span>
               </div>
             </div>
-            <div class="col">
+            <div class="col-6">
               <div
-                class="p-2 border border-secondary border-opacity-25 rounded text-center small text-light bg-black bg-opacity-50">
-                <i class="bi bi-bootstrap-fill text-warning d-block mb-1 fs-6"></i>
-                <span>Bootstrap 5</span>
+                class="p-2 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-bootstrap-fill text-warning"></i>
+                <span class="text-white small fw-medium">Bootstrap 5</span>
               </div>
             </div>
-            <div class="col">
+            <div class="col-6">
               <div
-                class="p-2 border border-secondary border-opacity-25 rounded text-center small text-light bg-black bg-opacity-50">
-                <i class="bi bi-file-code-fill text-warning d-block mb-1 fs-6"></i>
-                <span>JSON Data</span>
+                class="p-2 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-database-fill-gear text-warning"></i>
+                <span class="text-white small fw-medium">JSON Data</span>
               </div>
             </div>
           </div>
         </div>
-        <!-- Coluna 3: Documentação e Links -->
-        <div class="col-12 col-md-3">
-          <h6 class="text-warning fw-bold text-uppercase mb-3 d-flex align-items-center gap-2 small">
-            <i class="bi bi-journal-bookmark"></i>
-            Documentação
+
+        <!-- Coluna 3: Documentação (Touch targets com setas indicativas) -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <h6
+            class="text-warning fw-bold text-uppercase small d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-3">
+            <i class="bi bi-journal-code"></i> Documentação
           </h6>
-          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li>
-              <a href="/como-fiz.html" class="text-white text-decoration-none d-inline-flex align-items-center gap-2">
-                <i class="bi bi-journal-code text-warning"></i>
+          <div class="d-flex flex-column gap-2">
+            <a href="#como-fiz"
+              class="btn btn-outline-secondary border-opacity-25 bg-black bg-opacity-25 text-white text-decoration-none rounded-3 py-2 px-3 d-flex align-items-center justify-content-between small">
+              <span class="d-flex align-items-center gap-2">
+                <i class="bi bi-play-circle-fill text-warning fs-6"></i>
                 <span>Página "Como Fiz"</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                class="text-white text-decoration-none d-inline-flex align-items-center gap-2">
-                <i class="bi bi-github text-warning"></i>
+              </span>
+              <i class="bi bi-chevron-right text-muted small"></i>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              class="btn btn-outline-secondary border-opacity-25 bg-black bg-opacity-25 text-white text-decoration-none rounded-3 py-2 px-3 d-flex align-items-center justify-content-between small">
+              <span class="d-flex align-items-center gap-2">
+                <i class="bi bi-github text-warning fs-6"></i>
                 <span>Repositório GitHub</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-decoration-none d-inline-flex align-items-center gap-2"
-                style="color: #adb5bd !important;">
-                <i class="bi bi-arrow-up-circle"></i>
-                <span>Voltar ao topo</span>
-              </a>
-            </li>
-          </ul>
+              </span>
+              <i class="bi bi-box-arrow-up-right text-muted small"></i>
+            </a>
+          </div>
         </div>
 
       </div>
 
-      <!-- Linha Divisória Sutil -->
-      <hr class="border-secondary border-opacity-25 my-4" />
+      <!-- Botão Voltar ao Topo -->
+      <div class="text-center my-4">
+        <a href="#"
+          class="btn btn-warning rounded-pill px-4 py-2 fw-bold text-dark d-inline-flex align-items-center gap-2 shadow-sm text-decoration-none">
+          <i class="bi bi-arrow-up-circle-fill fs-5"></i>
+          <span>Voltar ao topo</span>
+        </a>
+      </div>
 
-      <!-- Barra Inferior -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small"
-        style="color: #adb5bd !important;">
+      <hr class="border-secondary border-opacity-25 my-3">
+
+      <!-- Linha de Copyright -->
+      <div
+        class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-1 small text-secondary text-center text-sm-start">
         <span>&copy; 2026 PedalHub. Desafio Técnico.</span>
         <span>Desenvolvido com Vite, TypeScript e Bootstrap 5</span>
       </div>
+
     </div>
   </footer>
 

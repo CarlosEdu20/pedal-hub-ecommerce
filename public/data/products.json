@@ -1,23 +1,19 @@
 [
   {
     "id": 1,
-    "name": "Bicicleta Gravel Sense Versa Evo",
-    "description": "Quadro em alumínio hidroformado 6061 T4/T6, garfo 100% em fibra de carbono com eixo passante, grupo Shimano Sora 2x9V e freios a disco mecânicos.",
-    "price": 5990.00,
+    "name": "Bicicleta Caloi Explorer Pro 29",
+    "description": "Quadro em alumínio 6061 T6 com cabeamento interno e Boost, suspensão RockShox Judy Silver 100mm com trava no guidão, grupo Shimano Deore 1x11v (11-51D), freios hidráulicos Shimano MT200 e pneus Schwalbe 29x2.25.",
+    "price": 5690.00,
     "category": "Bicicletas",
-    "image": "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.9,
-    "inStock": true
+    "image": "/images/products/bicicleta-caloi-explorer.webp"
   },
   {
     "id": 2,
-    "name": "Mountain Bike Caloi Explorer Pro 29",
-    "description": "Quadro em alumínio com cabeamento interno, suspensão RockShox Judy TK 100mm a ar com trava no guidão, transmissão Shimano Deore 1x11V e freios hidráulicos MT200.",
-    "price": 5299.00,
+    "name": "Bicicleta Oggi Hacker HDS 29",
+    "description": "Quadro em alumínio 6061 T6 oversize, suspensão dianteira Suntour 100mm com trava, transmissão Shimano 24 velocidades (3x8), freios a disco hidráulicos e aros Alexrims 29",
+    "price": 2499.00,
     "category": "Bicicletas",
-    "image": "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.8,
-    "inStock": true
+    "image": "/images/products/bicicleta-oggi-hacker.webp"
   },
   {
     "id": 3,
@@ -25,58 +21,54 @@
     "description": "Sistema de proteção contra impactos multidirecionais MIPS, sistema de ajuste Headset SX com microajuste e sistema de refrigeração 4th Dimension.",
     "price": 349.90,
     "category": "Acessórios",
-    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.9,
-    "inStock": true
+    "image": "/images/products/capacete-specialized-align.webp"
   },
   {
     "id": 4,
-    "name": "Farol Dianteiro Rockbros RHL 1000 Lumens",
+    "name": "Farol Dianteiro Rockbros 1000 Lumens",
     "description": "Farol recarregável via USB-C com bateria de 4500mAh, corpo em liga de alumínio CNC, proteção contra água IPX6 e 5 modos de iluminação com corte antiofuscamento.",
     "price": 199.90,
     "category": "Acessórios",
-    "image": "https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.7,
-    "inStock": true
+    "image": "/images/products/farol-led-rockbros.webp"
   },
   {
     "id": 5,
-    "name": "Bolsa de Quadro Curtlo Frame Bag 1.2L",
+    "name": "Bolsa de Quadro Impermeável Rockbros",
     "description": "Confeccionada em tecido Cordura resistente à água e abrasão, fixação com tiras autocolantes de alta aderência e compartimento estruturado com espuma.",
     "price": 149.00,
     "category": "Acessórios",
-    "image": "https://images.unsplash.com/photo-1559348349-86f1f65817fe?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.6,
-    "inStock": true
+    "image": "/images/products/bolsa-quadro-impermeavel.webp"
   },
   {
     "id": 6,
-    "name": "Mini Bomba de Ar Topeak Pocket Rocket com Manômetro",
+    "name": "Bomba de Ar Portátil Alta Pressão",
     "description": "Corpo compacto em alumínio usinado, capacidade de até 160 PSI / 11 bar, bico SmartHead compatível automaticamente com válvulas Presta e Schrader.",
-    "price": 189.90,
+    "price": 49.98,
     "category": "Acessórios",
-    "image": "https://images.unsplash.com/photo-1583267746897-2cf415887172?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.8,
-    "inStock": true
+    "image": "/images/products/bomba-de-ar-portatil.webp"
   },
   {
     "id": 7,
-    "name": "Camisa Ciclismo Márcio May New Sport UV50+",
+    "name": "Camisa Ciclismo Marcio May Sport Masculina",
     "description": "Tecido com tecnologia Dry de rápida evaporação e proteção solar UV50+, zíper semiautomático de abertura total, 3 bolsos traseiros e faixas refletivas de segurança.",
-    "price": 229.00,
+    "price": 180.00,
     "category": "Vestuário",
-    "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.8,
-    "inStock": true
+    "image": "/images/products/camisa-marcio-may-sport.webp"
   },
   {
     "id": 8,
-    "name": "Óculos Ciclismo Shimano Technium Polarizado UV400",
+    "name": "Óculos Ciclismo Shimano Technium Polarizado",
     "description": "Armação anatômica em Grilamid TR90 com lente Ridescape de alto contraste e proteção total UVA/UVB, pontas das hastes em TPE emborrachado antiderrapante.",
-    "price": 459.00,
+    "price": 500.00,
     "category": "Vestuário",
-    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
-    "rating": 4.9,
-    "inStock": true
+    "image": "/images/products/oculos-shimano.webp"
+  },
+  {
+    "id": 9,
+    "name": "Óculos Ciclismo Ducati Speed UV400",
+    "description": "Óculos esportivos com lente UV400, ajuste seguro e design aerodinâmico para pedalar com conforto e proteção máxima em dias de sol.",
+    "price": 420.00,
+    "category": "Vestuário",
+    "image": "/images/products/oculos-ducati-speed.webp"
   }
 ]

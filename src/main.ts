@@ -195,7 +195,7 @@ const setupCheckout = (): void => {
       const customerName = nameInput?.value.trim() || 'Cliente';
       const orderProtocol = Math.floor(100000 + Math.random() * 900000);
       const totalAmount = document.getElementById('modal-checkout-total')?.textContent || 'R$ 0,00';
-      
+
       const paymentChecked = document.querySelector('input[name="payment-method"]:checked') as HTMLInputElement | null;
       const paymentMethod = paymentChecked ? paymentChecked.value : 'PIX';
 

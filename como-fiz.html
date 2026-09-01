@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PedalHub &bull; Como Fiz</title>
-  
+
   <!-- Bootstrap 5 & Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./src/style.css">
   <link rel="icon" href="/public/favicon.jpeg" type="image/x-icon">
-  
+
 </head>
+
 <body class="bg-dark text-light min-vh-100 d-flex flex-column" style="background-color: #121214 !important;">
 
   <!-- Barra Superior -->
-  <header class="border-bottom border-secondary border-opacity-25 py-3 sticky-top bg-dark bg-opacity-95" style="backdrop-filter: blur(10px);">
+  <header class="border-bottom border-secondary border-opacity-25 py-3 sticky-top bg-dark bg-opacity-95"
+    style="backdrop-filter: blur(10px);">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
         <i class="bi bi-bicycle text-warning fs-3"></i>
         <span class="fs-4 fw-bold text-white">Pedal<span class="text-warning">Hub</span></span>
       </a>
-      <a href="index.html" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-2">
+      <a href="index.html"
+        class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-2">
         <i class="bi bi-arrow-left"></i> Voltar à Loja
       </a>
     </div>
@@ -29,12 +33,14 @@
 
   <!-- Container Principal -->
   <main class="container my-5 flex-grow-1" style="max-width: 860px;">
-    
+
     <!-- Hero / Título -->
     <div class="mb-5 pb-3 border-bottom border-secondary border-opacity-25">
-      <span class="badge bg-warning text-dark fw-bold text-uppercase px-3 py-2 rounded-pill mb-3">Relatório Técnico</span>
+      <span class="badge bg-warning text-dark fw-bold text-uppercase px-3 py-2 rounded-pill mb-3">Relatório
+        Técnico</span>
       <h1 class="display-6 fw-bold text-white mb-2">Processo de Desenvolvimento &bull; PedalHub</h1>
-      <p class="text-light-emphasis fs-6 mb-0">Documentação das decisões técnicas, estrutura de dados e critérios de engenharia adotados no projeto.</p>
+      <p class="text-light-emphasis fs-6 mb-0">Documentação das decisões técnicas, estrutura de dados e critérios de
+        engenharia adotados no projeto.</p>
     </div>
 
     <!-- 0. Vídeo de Demonstração -->
@@ -42,16 +48,16 @@
       <h3 class="fs-4 fw-bold text-warning d-flex align-items-center gap-2 mb-3">
         <i class="bi bi-camera-video-fill"></i> Vídeo de Apresentação
       </h3>
-      <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-secondary border-opacity-25 shadow-lg bg-black">
-        <iframe 
-          src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
-          title="Apresentação do Projeto PedalHub" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      <div
+        class="ratio ratio-16x9 rounded-4 overflow-hidden border border-secondary border-opacity-25 shadow-lg bg-black">
+        <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Apresentação do Projeto PedalHub"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>
       <div class="text-secondary small mt-2 d-flex align-items-center justify-content-between">
-        <span><i class="bi bi-info-circle me-1"></i> Demonstração do fluxo funcional do catálogo, do carrinho e da experiência responsiva.</span>
+        <span><i class="bi bi-info-circle me-1"></i> Demonstração do fluxo funcional do catálogo, do carrinho e da
+          experiência responsiva.</span>
       </div>
     </section>
 
@@ -61,15 +67,20 @@
         <i class="bi bi-diagram-3-fill"></i> 1. Arquitetura e Estrutura Modular
       </h3>
       <p class="text-light" style="line-height: 1.7; color: #d1d5db !important;">
-        O projeto foi implementado com <strong>TypeScript</strong> e <strong>Vite</strong> como base de execução, com foco em simplicidade operacional, tipagem forte e manipulação direta do DOM. Essa decisão reduz a camada de abstração desnecessária, melhora a previsibilidade do comportamento e favorece uma implementação mais enxuta, sem perder escalabilidade para evoluções futuras.
+        O projeto foi implementado com <strong>TypeScript</strong> e <strong>Vite</strong> como base de execução, com
+        foco em simplicidade operacional, tipagem forte e manipulação direta do DOM. Essa decisão reduz a camada de
+        abstração desnecessária, melhora a previsibilidade do comportamento e favorece uma implementação mais enxuta,
+        sem perder escalabilidade para evoluções futuras.
       </p>
-      
+
       <div class="row g-3 mt-1">
         <div class="col-12 col-md-6">
           <div class="p-3 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-25 h-100">
             <span class="badge bg-warning text-dark font-monospace fw-bold mb-2">src/types.ts</span>
             <p class="small text-light mb-0" style="color: #e5e7eb !important;">
-              Centraliza os contratos de domínio da aplicação, como <code>Product</code> e <code>CartItem</code>. A tipagem explícita reduz erros de runtime e aumenta a segurança ao evoluir o comportamento do catálogo e do checkout.
+              Centraliza os contratos de domínio da aplicação, como <code>Product</code> e <code>CartItem</code>. A
+              tipagem explícita reduz erros de runtime e aumenta a segurança ao evoluir o comportamento do catálogo e do
+              checkout.
             </p>
           </div>
         </div>
@@ -78,7 +89,9 @@
           <div class="p-3 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-25 h-100">
             <span class="badge bg-warning text-dark font-monospace fw-bold mb-2">src/api.ts</span>
             <p class="small text-light mb-0" style="color: #e5e7eb !important;">
-              Responsável por carregar os dados do catálogo de forma assíncrona, mantendo a camada de visualização desacoplada da fonte de dados. A estratégia de tratamento com <code>try/catch</code> torna o fluxo mais resiliente em ambiente real.
+              Responsável por carregar os dados do catálogo de forma assíncrona, mantendo a camada de visualização
+              desacoplada da fonte de dados. A estratégia de tratamento com <code>try/catch</code> torna o fluxo mais
+              resiliente em ambiente real.
             </p>
           </div>
         </div>
@@ -87,7 +100,9 @@
           <div class="p-3 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-25 h-100">
             <span class="badge bg-warning text-dark font-monospace fw-bold mb-2">src/dom.ts</span>
             <p class="small text-light mb-0" style="color: #e5e7eb !important;">
-              Guarda a lógica de renderização da interface: cards do catálogo, atualização do offcanvas do carrinho e alternância dinâmica de estados de feedback. Essa separação mantém o código de apresentação previsível e mais fácil de manter.
+              Guarda a lógica de renderização da interface: cards do catálogo, atualização do offcanvas do carrinho e
+              alternância dinâmica de estados de feedback. Essa separação mantém o código de apresentação previsível e
+              mais fácil de manter.
             </p>
           </div>
         </div>
@@ -96,7 +111,9 @@
           <div class="p-3 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-25 h-100">
             <span class="badge bg-warning text-dark font-monospace fw-bold mb-2">src/main.ts</span>
             <p class="small text-light mb-0" style="color: #e5e7eb !important;">
-              Atua como orquestrador da aplicação, coordenando filtros, busca, processo de adição ao carrinho e inicialização do estado. O fluxo centralizado torna a lógica mais testável e facilita a expansão do sistema.
+              Atua como orquestrador da aplicação, coordenando filtros, busca, processo de adição ao carrinho e
+              inicialização do estado. O fluxo centralizado torna a lógica mais testável e facilita a expansão do
+              sistema.
             </p>
           </div>
         </div>
@@ -109,7 +126,12 @@
         <i class="bi bi-database-check"></i> 2. Catálogo Desacoplado e Otimização de Assets
       </h3>
       <p class="text-light" style="line-height: 1.7; color: #d1d5db !important;">
-        O catálogo de produtos foi externalizado para o arquivo <code>public/data/products.json</code> para simular uma fonte de dados real e manter a estrutura separada da camada de apresentação. Essa abordagem favorece reutilização, reduz acoplamento e facilita futuras integrações com APIs externas. As imagens foram padronizadas em <strong>WebP</strong> e nomeadas em <em>kebab-case</em> com convenções semânticas, como <code>bicicleta-caloi-explorer.webp</code>, o que melhora a manutenção do projeto e ajuda a evitar problemas de roteamento e deploy em ambientes como Vite, Vercel e GitHub Pages.
+        O catálogo de produtos foi externalizado para o arquivo <code>public/data/products.json</code> para simular uma
+        fonte de dados real e manter a estrutura separada da camada de apresentação. Essa abordagem favorece
+        reutilização, reduz acoplamento e facilita futuras integrações com APIs externas. As imagens foram padronizadas
+        em <strong>WebP</strong> e nomeadas em <em>kebab-case</em> com convenções semânticas, como
+        <code>bicicleta-caloi-explorer.webp</code>, o que melhora a manutenção do projeto e ajuda a evitar problemas de
+        roteamento e deploy em ambientes como Vite, Vercel e GitHub Pages.
       </p>
     </section>
 
@@ -121,13 +143,16 @@
       <div class="p-3 rounded-3 bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
         <ul class="d-flex flex-column gap-2 mb-0 ps-3 text-light" style="color: #e5e7eb !important;">
           <li>
-            <strong>Carrinho reativo:</strong> a quantidade de itens e o valor total são recalculados em tempo real conforme o usuário adiciona, remove ou ajusta produtos.
+            <strong>Carrinho reativo:</strong> a quantidade de itens e o valor total são recalculados em tempo real
+            conforme o usuário adiciona, remove ou ajusta produtos.
           </li>
           <li>
-            <strong>Pagamento condicional:</strong> o formulário alterna entre PIX e cartão de crédito, exibindo campos específicos de cada método sem recarregar a página nem destruir o contexto atual.
+            <strong>Pagamento condicional:</strong> o formulário alterna entre PIX e cartão de crédito, exibindo campos
+            específicos de cada método sem recarregar a página nem destruir o contexto atual.
           </li>
           <li>
-            <strong>Resumo final estruturado:</strong> o checkout consolida nome, endereço e método de pagamento em uma experiência coerente, com feedback visual e estado claro para o usuário.
+            <strong>Resumo final estruturado:</strong> o checkout consolida nome, endereço e método de pagamento em uma
+            experiência coerente, com feedback visual e estado claro para o usuário.
           </li>
         </ul>
       </div>
@@ -139,24 +164,30 @@
         <i class="bi bi-shield-check"></i> 4. Validação Automatizada e Integração Contínua
       </h3>
       <p class="text-light mb-3" style="color: #d1d5db !important;">
-        A qualidade de entrega foi reforçada pela adoção de um pipeline de integração contínua em <strong>GitHub Actions</strong> (<code>.github/workflows/ci.yml</code>), com etapas automatizadas para garantir consistência e reduzir regressões durante o desenvolvimento.
+        A qualidade de entrega foi reforçada pela adoção de um pipeline de integração contínua em <strong>GitHub
+          Actions</strong> (<code>.github/workflows/ci.yml</code>), com etapas automatizadas para garantir consistência
+        e reduzir regressões durante o desenvolvimento.
       </p>
       <div class="p-3 rounded-3 bg-black bg-opacity-50 border border-secondary border-opacity-25 font-monospace small">
-        <div class="text-success"><i class="bi bi-check-circle-fill me-2"></i>npm ci <span class="text-secondary">// instalação determinística das dependências</span></div>
-        <div class="text-success mt-1"><i class="bi bi-check-circle-fill me-2"></i>npx tsc --noEmit <span class="text-secondary">// validação estática de tipos TypeScript</span></div>
-        <div class="text-success mt-1"><i class="bi bi-check-circle-fill me-2"></i>npm run build <span class="text-secondary">// geração do bundle final via Vite</span></div>
+        <div class="text-success"><i class="bi bi-check-circle-fill me-2"></i>npm ci <span class="text-secondary">//
+            instalação determinística das dependências</span></div>
+        <div class="text-success mt-1"><i class="bi bi-check-circle-fill me-2"></i>npx tsc --noEmit <span
+            class="text-secondary">// validação estática de tipos TypeScript</span></div>
+        <div class="text-success mt-1"><i class="bi bi-check-circle-fill me-2"></i>npm run build <span
+            class="text-secondary">// geração do bundle final via Vite</span></div>
       </div>
     </section>
 
   </main>
 
   <!-- Rodapé -->
-  <footer class="border-top border-secondary border-opacity-25 py-4 text-center text-secondary small bg-black bg-opacity-40">
+  <footer
+    class="border-top border-secondary border-opacity-25 py-4 text-center text-secondary small bg-black bg-opacity-40">
     <div class="container">
       &copy; 2026 PedalHub &bull; Documentação Técnica do Projeto
     </div>
   </footer>
 
 </body>
-</html>
 
+</html>

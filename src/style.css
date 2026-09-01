@@ -50,23 +50,23 @@
     }
 
     /* Transição suave base para todos os cards do catálogo */
-#products-grid .card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform;
-}
+    #products-grid .card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
 
-/* Elevação do card e ampliação da sombra ao passar o mouse */
-#products-grid .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 28px #ffc107 !important;
-}
+    /* Elevação do card e ampliação da sombra ao passar o mouse */
+    #products-grid .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 28px #ffc107 !important;
+    }
 
-/* Leve realce no botão Comprar ao passar o mouse no card */
-#products-grid .card:hover .btn-add-cart {
-  filter: brightness(1.05);
-}
+    /* Leve realce no botão Comprar ao passar o mouse no card */
+    #products-grid .card:hover .btn-add-cart {
+      filter: brightness(1.05);
+    }
 
-  
+
 
     /* ===================== HERO SECTION ===================== */
     .hero-section {

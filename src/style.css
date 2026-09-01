@@ -134,6 +134,45 @@
       gap: 0.3rem;
     }
 
+    .hero-subtitle-max-width {
+      max-width: 600px;
+    }
+
+    .icon-badge-circle {
+      width: 56px;
+      height: 56px;
+    }
+
+    .badge-small-font {
+      font-size: 0.65rem;
+    }
+
+    .small-font-75 {
+      font-size: 0.75rem;
+    }
+
+    .text-muted-icon {
+      color: var(--muted-text);
+    }
+
+    .footer-description-max {
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .monospace-font-small {
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+
+    .receipt-text-truncate {
+      max-width: 200px;
+    }
+
+    .toast-container-custom {
+      z-index: 1100;
+    }
+
     /* ===================== BENEFITS SECTION ===================== */
     .benefits-section {
       display: grid;

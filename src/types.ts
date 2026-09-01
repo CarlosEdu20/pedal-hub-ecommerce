@@ -7,8 +7,6 @@ export interface Product {
   price: number;
   category: ProductCategory;
   image: string;
-  rating: number;
-  inStock: boolean;
 }
 
 export interface CartItem {

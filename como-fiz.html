@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,10 +56,10 @@
       </h3>
       <div
         class="ratio ratio-16x9 rounded-4 overflow-hidden border border-secondary border-opacity-25 shadow-lg bg-black">
-        <iframe src="/public/video/apresentacao_final.mp4" title="Apresentação do Projeto PedalHub"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <video controls preload="metadata" playsinline class="w-100 h-100">
+          <source src="/video/apresentacao_final.mp4" type="video/mp4">
+          Seu navegador não suporta a reprodução deste vídeo.
+        </video>
       </div>
       <div class="text-secondary small mt-2 d-flex align-items-center justify-content-between">
         <span><i class="bi bi-info-circle me-1"></i> Demonstração do fluxo funcional do catálogo, do carrinho e da
